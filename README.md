@@ -30,7 +30,13 @@ The constructor creates a new instance of TDataFile.
     constructor Create(const FileName: string; readonly: boolean = false);
  
  Parameter **FileName** specifies the path and file name of the data file you open or create.  
- Parameter **readonly** specifies if the file is opened as readonly. In readonly mode the write functions will not do anything.
+ Parameter **readonly** specifies if the file is opened as readonly. In readonly mode the write functions will not do anything.  
+  
+If you want to use the built-in encoding, set the **CodeKey** property after creating the class object.  
+  
+    var df: TDataFile;
+    df := TDataFile.Create('filename');
+    df.CodeKey := 'key used to encode data'; 
 
 
 ## Available functions and procedures
