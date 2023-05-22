@@ -1,4 +1,4 @@
-# TDataFile for Delphi
+# TDataFile for Lazarus/Free Pascal
 
 This class works in a similar way to a standard **TIniFile** with many similar methods but more powerful for stored data in binary file. The class also supports basic xor encoding to scramble the binary file further.  
 
