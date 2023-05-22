@@ -1,0 +1,81 @@
+object frmDFkey: TfrmDFkey
+  Left = 356
+  Height = 240
+  Top = 303
+  Width = 600
+  BorderIcons = [biSystemMenu]
+  Caption = 'Access key for DataFile'
+  ClientHeight = 240
+  ClientWidth = 600
+  Color = clBtnFace
+  DoubleBuffered = True
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Font.Quality = fqCleartypeNatural
+  ParentDoubleBuffered = False
+  LCLVersion = '2.2.6.0'
+  object Label1: TLabel
+    Left = 20
+    Height = 17
+    Top = 8
+    Width = 51
+    Caption = 'Data file:'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 20
+    Height = 17
+    Top = 80
+    Width = 75
+    Caption = 'Data file key:'
+    ParentColor = False
+  end
+  object lbl_InfoOpen: TLabel
+    Left = 24
+    Height = 17
+    Top = 144
+    Width = 258
+    Caption = 'Leave empty if the data file is not protected!'
+    ParentColor = False
+    Visible = False
+  end
+  object lbl_InfoNew: TLabel
+    Left = 24
+    Height = 17
+    Top = 144
+    Width = 322
+    Caption = 'Leave empty if you do not want to protect the data file!'
+    ParentColor = False
+    Visible = False
+  end
+  object edit_filename: TEdit
+    Left = 20
+    Height = 25
+    Top = 31
+    Width = 560
+    Anchors = [akTop, akLeft, akRight]
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object edit_Password: TEdit
+    Left = 20
+    Height = 25
+    Top = 103
+    Width = 560
+    Anchors = [akTop, akLeft, akRight]
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 456
+    Height = 40
+    Top = 180
+    Width = 124
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 2
+  end
+end

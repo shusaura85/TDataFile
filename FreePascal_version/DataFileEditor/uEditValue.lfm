@@ -1,0 +1,660 @@
+object frmEdit: TfrmEdit
+  Left = 307
+  Height = 413
+  Top = 139
+  Width = 771
+  BorderIcons = [biSystemMenu]
+  Caption = 'Edit value'
+  ClientHeight = 413
+  ClientWidth = 771
+  Color = clBtnFace
+  DoubleBuffered = True
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Font.Quality = fqCleartypeNatural
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  ParentDoubleBuffered = False
+  LCLVersion = '2.2.6.0'
+  object pages: TPageControl
+    Left = 5
+    Height = 297
+    Top = 70
+    Width = 761
+    ActivePage = page_Int8
+    Align = alClient
+    BorderSpacing.Around = 5
+    TabIndex = 1
+    TabOrder = 0
+    OnChange = pagesChange
+    object page_String: TTabSheet
+      Caption = 'Edit string value'
+      ClientHeight = 267
+      ClientWidth = 753
+      object edit_String: TMemo
+        Left = 0
+        Height = 267
+        Top = 0
+        Width = 753
+        Align = alClient
+        Lines.Strings = (
+          'edit_String'
+        )
+        ScrollBars = ssBoth
+        TabOrder = 0
+      end
+    end
+    object page_Int8: TTabSheet
+      Caption = 'Edit 8-bit Integer'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 6
+      object Label11: TLabel
+        Left = 24
+        Height = 17
+        Top = 144
+        Width = 74
+        Caption = 'Hexadecimal'
+        ParentColor = False
+      end
+      object lbl_Int8_outside_range: TLabel
+        Left = 24
+        Height = 17
+        Top = 119
+        Width = 545
+        AutoSize = False
+        Caption = '%error_outside_range%'
+        ParentColor = False
+      end
+      object Label14: TLabel
+        Left = 24
+        Height = 17
+        Top = 64
+        Width = 46
+        Caption = 'Decimal'
+        ParentColor = False
+      end
+      object Label16: TLabel
+        Left = 24
+        Height = 17
+        Top = 10
+        Width = 73
+        Caption = 'Integer type:'
+        ParentColor = False
+      end
+      object edit_Int8: TEdit
+        Left = 24
+        Height = 25
+        Top = 88
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        OnKeyUp = edit_Int8KeyUp
+        TabOrder = 0
+      end
+      object edit_Int8_Hex: TEdit
+        Left = 24
+        Height = 25
+        Top = 168
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        MaxLength = 2
+        OnKeyUp = edit_Int8_HexKeyUp
+        TabOrder = 1
+      end
+      object edit_int8_type: TEdit
+        Left = 24
+        Height = 25
+        Top = 33
+        Width = 300
+        ReadOnly = True
+        TabOrder = 2
+        Text = 'Int8 | 8-bit Signed Integer [-128 .. 127]'
+      end
+    end
+    object page_Int16: TTabSheet
+      Caption = 'Edit 16-bit Integer'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 7
+      object Label12: TLabel
+        Left = 24
+        Height = 17
+        Top = 10
+        Width = 73
+        Caption = 'Integer type:'
+        ParentColor = False
+      end
+      object Label17: TLabel
+        Left = 24
+        Height = 17
+        Top = 64
+        Width = 46
+        Caption = 'Decimal'
+        ParentColor = False
+      end
+      object lbl_Int16_outside_range: TLabel
+        Left = 24
+        Height = 17
+        Top = 119
+        Width = 545
+        AutoSize = False
+        Caption = '%error_outside_range%'
+        ParentColor = False
+      end
+      object Label19: TLabel
+        Left = 24
+        Height = 17
+        Top = 144
+        Width = 74
+        Caption = 'Hexadecimal'
+        ParentColor = False
+      end
+      object edit_int16_type: TEdit
+        Left = 24
+        Height = 25
+        Top = 33
+        Width = 300
+        ReadOnly = True
+        TabOrder = 0
+        Text = 'Int16 | 16-bit Signed Integer [-32768 .. 32767]'
+      end
+      object edit_Int16: TEdit
+        Left = 24
+        Height = 25
+        Top = 88
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        OnKeyUp = edit_Int16KeyUp
+        TabOrder = 1
+      end
+      object edit_Int16_Hex: TEdit
+        Left = 24
+        Height = 25
+        Top = 168
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        MaxLength = 4
+        OnKeyUp = edit_Int16_HexKeyUp
+        TabOrder = 2
+      end
+    end
+    object page_Integer: TTabSheet
+      Caption = 'Edit 32-bit Integer'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 1
+      object Label1: TLabel
+        Left = 24
+        Height = 17
+        Top = 64
+        Width = 46
+        Caption = 'Decimal'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 24
+        Height = 17
+        Top = 144
+        Width = 74
+        Caption = 'Hexadecimal'
+        ParentColor = False
+      end
+      object lbl_Integer_outside_range: TLabel
+        Left = 24
+        Height = 17
+        Top = 119
+        Width = 545
+        AutoSize = False
+        Caption = '%error_outside_range%'
+        ParentColor = False
+      end
+      object Label8: TLabel
+        Left = 24
+        Height = 17
+        Top = 10
+        Width = 73
+        Caption = 'Integer type:'
+        ParentColor = False
+      end
+      object edit_Integer: TEdit
+        Left = 24
+        Height = 25
+        Top = 88
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        OnKeyUp = edit_IntegerKeyUp
+        TabOrder = 0
+      end
+      object edit_Integer_Hex: TEdit
+        Left = 24
+        Height = 25
+        Top = 168
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        MaxLength = 8
+        OnKeyUp = edit_Integer_HexKeyUp
+        TabOrder = 1
+      end
+      object edit_int32_type: TEdit
+        Left = 24
+        Height = 25
+        Top = 33
+        Width = 300
+        ReadOnly = True
+        TabOrder = 2
+        Text = 'Int32 | 32-bit Signed Integer'
+      end
+    end
+    object page_Int64: TTabSheet
+      Caption = 'Edit 64-bit Integer'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 3
+      object Label3: TLabel
+        Left = 24
+        Height = 17
+        Top = 64
+        Width = 46
+        Caption = 'Decimal'
+        ParentColor = False
+      end
+      object lbl_Int64_outside_range: TLabel
+        Left = 24
+        Height = 17
+        Top = 119
+        Width = 545
+        AutoSize = False
+        Caption = '%error_outside_range%'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        Left = 24
+        Height = 17
+        Top = 144
+        Width = 74
+        Caption = 'Hexadecimal'
+        ParentColor = False
+      end
+      object Label9: TLabel
+        Left = 24
+        Height = 17
+        Top = 10
+        Width = 73
+        Caption = 'Integer type:'
+        ParentColor = False
+      end
+      object edit_Int64: TEdit
+        Left = 24
+        Height = 25
+        Top = 88
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        OnKeyUp = edit_Int64KeyUp
+        TabOrder = 0
+      end
+      object edit_Int64_Hex: TEdit
+        Left = 24
+        Height = 25
+        Top = 168
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        CharCase = ecUppercase
+        MaxLength = 16
+        OnKeyUp = edit_Int64_HexKeyUp
+        TabOrder = 1
+      end
+      object edit_int64_type: TEdit
+        Left = 24
+        Height = 25
+        Top = 33
+        Width = 300
+        ReadOnly = True
+        TabOrder = 2
+        Text = 'Int64 | 64-bit Signed Integer'
+      end
+    end
+    object page_Float: TTabSheet
+      Caption = 'Edit float'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 4
+      object Label4: TLabel
+        Left = 24
+        Height = 17
+        Top = 10
+        Width = 60
+        Caption = 'Float type:'
+        ParentColor = False
+      end
+      object Label10: TLabel
+        Left = 24
+        Height = 17
+        Top = 64
+        Width = 92
+        Caption = 'Value (Decimal):'
+        ParentColor = False
+      end
+      object edit_float_type: TEdit
+        Left = 24
+        Height = 25
+        Top = 33
+        Width = 292
+        Anchors = [akTop, akLeft, akRight]
+        ReadOnly = True
+        TabOrder = 0
+        Text = 'Double | 64-bit Float'
+      end
+      object edit_float: TEdit
+        Left = 24
+        Height = 25
+        Top = 88
+        Width = 693
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 1
+      end
+    end
+    object page_Calendar: TTabSheet
+      Caption = 'Edit date time'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 5
+      object Label13: TLabel
+        Left = 24
+        Height = 17
+        Top = 9
+        Width = 30
+        Caption = 'Date:'
+        ParentColor = False
+      end
+      object Label15: TLabel
+        Left = 24
+        Height = 17
+        Top = 105
+        Width = 31
+        Caption = 'Time:'
+        ParentColor = False
+      end
+      object calendar_time: TDateTimePicker
+        Left = 24
+        Height = 45
+        Top = 128
+        Width = 125
+        CenturyFrom = 1941
+        MaxDate = 2958465
+        MinDate = -53780
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Segoe UI'
+        Font.Quality = fqCleartypeNatural
+        ParentFont = False
+        TabOrder = 0
+        TrailingSeparator = False
+        TextForNullDate = 'NULL'
+        LeadingZeros = True
+        Kind = dtkTime
+        TimeFormat = tf24
+        TimeDisplay = tdHMS
+        DateMode = dmComboBox
+        Date = 45040
+        Time = 0.684921574073087
+        UseDefaultSeparators = True
+        HideDateTimeParts = []
+        MonthNames = 'Long'
+      end
+      object calendar_date: TDateTimePicker
+        Left = 24
+        Height = 45
+        Top = 32
+        Width = 155
+        CenturyFrom = 1941
+        MaxDate = 2958465
+        MinDate = -53780
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Segoe UI'
+        Font.Quality = fqCleartypeNatural
+        ParentFont = False
+        TabOrder = 1
+        TrailingSeparator = False
+        TextForNullDate = 'NULL'
+        LeadingZeros = True
+        Kind = dtkDate
+        TimeFormat = tf24
+        TimeDisplay = tdHMS
+        DateMode = dmUpDown
+        Date = 45040
+        Time = 0.684921574073087
+        UseDefaultSeparators = True
+        HideDateTimeParts = []
+        MonthNames = 'Long'
+        OnChange = calendar_dateChange
+      end
+    end
+    object page_Stream: TTabSheet
+      Caption = 'Edit binary data'
+      ClientHeight = 267
+      ClientWidth = 753
+      ImageIndex = 2
+      object Panel3: TPanel
+        Left = 0
+        Height = 33
+        Top = 234
+        Width = 753
+        Align = alBottom
+        BevelOuter = bvNone
+        ClientHeight = 33
+        ClientWidth = 753
+        TabOrder = 0
+        object chk_hex_AllowInsert: TCheckBox
+          Left = 8
+          Height = 21
+          Top = 8
+          Width = 153
+          Caption = 'Allow insert and delete'
+          OnClick = chk_hex_AllowInsertClick
+          TabOrder = 0
+        end
+        object Button1: TButton
+          Left = 639
+          Height = 25
+          Top = 4
+          Width = 110
+          Caption = 'Export to file'
+          OnClick = Button1Click
+          TabOrder = 1
+        end
+        object Button3: TButton
+          Left = 520
+          Height = 25
+          Top = 4
+          Width = 110
+          Caption = 'Import from file'
+          OnClick = Button3Click
+          TabOrder = 2
+        end
+      end
+      object hex: TMPHexEditor
+        Cursor = crIBeam
+        Left = 0
+        Height = 234
+        Top = 0
+        Width = 753
+        Align = alClient
+        Font.Height = -15
+        Font.Name = 'Courier New'
+        ParentFont = False
+        TabOrder = 1
+        BytesPerRow = 16
+        Translation = tkAsIs
+        OffsetFormat = '-!10:0x|'
+        Colors.Background = clWindow
+        Colors.ChangedBackground = 11075583
+        Colors.ChangedText = clMaroon
+        Colors.CursorFrame = clNavy
+        Colors.Offset = clBlack
+        Colors.OddColumn = clBlue
+        Colors.EvenColumn = clNavy
+        Colors.CurrentOffsetBackground = clBtnShadow
+        Colors.OffsetBackground = clBtnFace
+        Colors.CurrentOffset = clBtnHighlight
+        Colors.Grid = clBtnFace
+        Colors.NonFocusCursorFrame = clAqua
+        Colors.ActiveFieldBackground = clWindow
+        FocusFrame = True
+        DrawGridLines = False
+        Version = 'september 30, 2007; © markus stephany, vcl[at]mirkes[dot]de'
+        ColWidths = (
+          57
+          6
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          9
+          9
+          18
+          9
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          10
+          19
+        )
+        RowHeights = (
+          0
+          0
+          19
+        )
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 41
+    Top = 372
+    Width = 771
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 41
+    ClientWidth = 771
+    TabOrder = 1
+    object btn_Save: TButton
+      Left = 687
+      Height = 30
+      Top = 3
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Save'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 5
+      Height = 30
+      Top = 3
+      Width = 75
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 65
+    Top = 0
+    Width = 771
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 65
+    ClientWidth = 771
+    TabOrder = 2
+    object Label6: TLabel
+      Left = 44
+      Height = 17
+      Top = 10
+      Width = 54
+      Alignment = taRightJustify
+      Caption = 'Key path:'
+      ParentColor = False
+    end
+    object Label7: TLabel
+      Left = 40
+      Height = 17
+      Top = 41
+      Width = 58
+      Alignment = taRightJustify
+      Caption = 'Key value:'
+      ParentColor = False
+    end
+    object edit_ValuePath: TEdit
+      Left = 104
+      Height = 25
+      Top = 7
+      Width = 658
+      Anchors = [akTop, akLeft, akRight]
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object edit_ValueName: TEdit
+      Left = 104
+      Height = 25
+      Top = 38
+      Width = 658
+      Anchors = [akTop, akLeft, akRight]
+      Enabled = False
+      ReadOnly = True
+      TabOrder = 1
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 721
+    Top = 114
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 721
+    Top = 162
+  end
+end
