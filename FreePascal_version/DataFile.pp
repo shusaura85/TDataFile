@@ -123,6 +123,8 @@ type
     procedure WriteStrings(Section, Ident: string; List: TStrings);
     procedure WriteFont(Section, Ident: string; Font: TFont);
     //----------------------------------------------------
+    function Rename(OldSection, OldIdent, NewSection, NewIdent: string): boolean;
+    //----------------------------------------------------
     procedure Delete(Section, Ident: string);
     procedure DeleteSection(Section: string);
     //----------------------------------------------------
@@ -896,6 +898,56 @@ begin
    WriteData(Section, Ident, pBuf, Len, TDFType.dfd_Font);
   finally
    FreeMem(pBuf, Len);
+  end;
+end;
+
+{------------------------------------------------------------------------------}
+{  rename                                                                      }
+{------------------------------------------------------------------------------}
+
+function TDataFile.Rename(OldSection, OldIdent, NewSection, NewIdent: string): boolean;
+var
+  Hdr    : IDataHeader;
+  pBuf   : Pointer;
+  Stream : TMemoryStream;
+  len    : integer;
+begin
+Result := false;
+if (FindIdent(OldSection, OldIdent, @Hdr)) then
+  begin
+  // read data
+    Stream := TMemoryStream.Create;
+    len := Hdr.Size;
+    GetMem(pBuf, len);
+    try
+      FFile.Read(pBuf^, len);
+      DecryptBuf(pBuf, len);
+      Stream.Size := 0;
+      Stream.Write(pBuf^, len);
+      Stream.Seek(0, soBeginning);
+    finally
+      FreeMem(pBuf, len);
+    end;
+
+  // write data
+    { init buffer }
+    GetMem(pBuf, Stream.Size);
+    try
+      Stream.Seek(0, soBeginning);
+      Stream.Read(pBuf^, Stream.Size);
+      { write data }
+      len := WriteData(NewSection, NewIdent, pBuf, Stream.Size, Hdr.DType);
+    finally
+      FreeMem(pBuf, Stream.Size);
+    end;
+
+    // delete old data
+    Delete(OldSection, OldIdent);
+
+    // release stream
+    Stream.Free;
+
+    if len >= 0 then Result := true;
   end;
 end;
 

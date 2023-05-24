@@ -586,6 +586,10 @@ object frmMain: TfrmMain
       Default = True
       OnClick = Modify1Click
     end
+    object Rename1: TMenuItem
+      Caption = '&Rename'
+      OnClick = Rename1Click
+    end
     object N9: TMenuItem
       Caption = '-'
     end

@@ -75,6 +75,7 @@ type
     StringList1: TMenuItem;
     N9: TMenuItem;
     Modify1: TMenuItem;
+    Rename1: TMenuItem;
     procedure New1Click(Sender: TObject);
     procedure Open1Click(Sender: TObject);
     procedure KeyTreeDblClick(Sender: TObject);
@@ -102,6 +103,7 @@ type
     procedure AboutDataFileEditor1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Modify1Click(Sender: TObject);
+    procedure Rename1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -120,7 +122,7 @@ implementation
 
 {$R *.dfm}
 
-uses uEditValue, uDFKey, uAbout;
+uses uEditValue, uDFKey, uAbout, uRename;
 
 const LABEL_ADDKEY = 'Enter new key name';
       LABEL_ADDROOT = 'Enter new root key name';
@@ -380,10 +382,11 @@ var li: TListItem;
 
     t:TTreeNode;
     p:string;
-
 begin
 if not Assigned(df) then exit;
 if KeyTree.Selected = nil then exit;
+if ValueList.Selected = nil then exit;
+
 
 // build path
 t := KeyTree.Selected;
@@ -873,6 +876,7 @@ begin
 if not Assigned(df) then Handled:=true;
 
 Modify1.Visible := false;   // value list only
+Rename1.Visible := false;   // value list only
 N9.Visible := false;        // value list only
 Delete1.Visible := true;
 Delete2.Visible := false;   // value list only
@@ -972,6 +976,53 @@ if OpenDialog1.Execute then
    end;
 end;
 
+procedure TfrmMain.Rename1Click(Sender: TObject);
+var li: TListItem;
+
+    t:TTreeNode;
+    p:string;
+
+    frm: TfrmRename;
+begin
+if not Assigned(df) then exit;
+if KeyTree.Selected = nil then exit;
+if ValueList.Selected = nil then exit;
+
+// build path
+t := KeyTree.Selected;
+p := GetPathFromNode(t);
+
+li := ValueList.Selected;
+
+//RenameValue(p, li.Caption, li.SubItems.Strings[0]);
+frm := TfrmRename.Create(frmMain);
+frm.Position := poOwnerFormCenter;
+
+frm.edit_OldPath.Text := p;
+frm.edit_OldName.Text := li.Caption;
+frm.edit_NewPath.Text := p;
+frm.edit_NewName.Text := li.Caption;
+
+frm.edit_NewName.SelectAll;
+
+if frm.ShowModal = mrOk then
+   begin
+   df.Rename(frm.edit_OldPath.Text, frm.edit_OldName.Text,
+             frm.edit_NewPath.Text, frm.edit_NewName.Text);
+
+   if frm.edit_OldPath.Text <> frm.edit_NewPath.Text then
+     begin
+     LoadHive;
+     KeyTree.Selected := GetNodeByText(KeyTree, frm.edit_NewPath.Text, true);
+     AddressBar.Text := frm.edit_NewPath.Text;
+     end;
+   LoadValues(frm.edit_NewPath.Text);
+   end;
+
+frm.Free;
+
+end;
+
 procedure TfrmMain.RootKey1Click(Sender: TObject);
 begin
 lbl_addKey.Caption := LABEL_ADDROOT;
@@ -992,6 +1043,7 @@ li := ValueList.GetItemAt(MousePos.X, MousePos.Y);
 if Assigned(li) then li.Selected := True;
 
 Modify1.Visible := true;
+Rename1.Visible := true;
 N9.Visible := true;
 Delete1.Visible := false;   // key tree only
 Delete2.Visible := true;

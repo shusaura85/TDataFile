@@ -89,14 +89,14 @@ If you want to use the built-in encoding, set the **CodeKey** property after cre
 |WriteBoolean|Section, Ident: string; Value: Boolean|*none*|Write a boolean value|
 |WriteStrings|Section, Ident: string; List: TStrings|*none*|Write a string list in the specified *List*|
 |WriteFont|Section, Ident: string; Font: TFont|*none*|Write font settings (name, style, size, etc) in the specified *Font*|
+|Rename|OldSection, OldIdent, NewSection, NewIdent: string|Boolean|Rename an identifier|
 |DeleteSection|Section: string|*none*|Delete the specified section|
 |Delete|Section, Ident: string|*none*|Delete the specified identifier|
 
 
 ## Requirements
 
-TDataFile was designed to be used with Delphi XE and higher. It may work with older versions but it was not tested.  
-The included editor was created using Delphi Ryo and may not compile in older versions.
+TDataFile was designed to be used with the latest stable Lazarus version. It may work with older versions but it was not tested.  
 
 ## Credits
 

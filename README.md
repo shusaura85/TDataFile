@@ -89,6 +89,7 @@ If you want to use the built-in encoding, set the **CodeKey** property after cre
 |WriteBoolean|Section, Ident: string; Value: Boolean|*none*|Write a boolean value|
 |WriteStrings|Section, Ident: string; List: TStrings|*none*|Write a string list in the specified *List*|
 |WriteFont|Section, Ident: string; Font: TFont|*none*|Write font settings (name, style, size, etc) in the specified *Font*|
+|Rename|OldSection, OldIdent, NewSection, NewIdent: string|Boolean|Rename an identifier|
 |DeleteSection|Section: string|*none*|Delete the specified section|
 |Delete|Section, Ident: string|*none*|Delete the specified identifier|
 
